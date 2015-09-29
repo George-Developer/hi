@@ -1,0 +1,10 @@
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.list .my-item.item {
+  left: 0;
+  right: 0;
+}
+
+

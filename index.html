@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>collection repeat and navigation</title>
+
+        <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+
+    <html ng-app="ionicApp">
+
+  <head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+        <title>My Contact List</title>
+
+        <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+          <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+          </head>
+
+        <body>
+
+          <ion-nav-view animation="slide-left-right"></ion-nav-view>
+          <script id="tabs.html" type="text/ng-template">
+            <ion-tabs>
+               <ion-tab icon="ion-home">
+                <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+                  <ion-nav-back-button class="button-icon ion-arrow-left-c">
+                  </ion-nav-back-button>
+                </ion-nav-bar>
+
+                <ion-nav-view name="main"></ion-nav-view>
+              </ion-tab>
+
+
+
+                  <ion-tab icon="ion-plus">
+                <ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+                  <ion-nav-back-button class="button-icon ion-arrow-left-c">
+                  </ion-nav-back-button>
+                </ion-nav-bar>
+                <ion-nav-view name="plus"></ion-nav-view>
+              </ion-tab >
+
+            </ion-tabs>
+          </script>
+
+
+          <script id="master.html" type="text/ng-template">
+            <ion-view title="Home">
+
+              <ion-header-bar class="bar-subheader item-input-inset">
+                <label class="item-input-wrapper">
+                  <i class="icon ion-ios7-search placeholder-icon"></i>
+                  <input type="search" placeholder="Search" ng-model="filter">
+                    </label>
+                  </ion-header-bar>
+
+                <ion-nav-buttons side="right">
+                  <a class="button" ng-click="scrollBottom()">
+                    Scroll To Bottom
+                  </a>
+
+
+
+                </ion-nav-buttons>
+                <div class="bar bar-footer">
+                  <button class="button button-clear pull-right">Add Content
+                  </button>
+                </div>
+
+                <ion-content>
+                  <div class="list">
+                    <a class="item my-item item-thumbnail-left"
+                       collection-repeat="pet in pets | filter:filter"
+                       collection-item-height="90"
+                       collection-item-width="'100%'"
+                       ui-sref="tabs.detail({petsId: pet.id })">
+                      <!--img ng-src="https://mimming.com/presos/internet-of-nodebots/img/firebase-icon.png"-->
+                      <img ng-src="img/{{($index % 3)}}.png">
+                        <h2>{{pet.firstName}}</h2>
+                        <p>{{pet.id}}</p>
+
+                        </a>
+                      </div>
+                    </ion-content>
+                  </ion-view>
+                </script>
+
+              <script id="detail.html" type="text/ng-template">
+                <ion-view title="{{pet.id}}">
+                  <ion-content class="padding">
+                    {{pet.id}}
+                    <h2>{{pet.firstName}}</h2>
+                    {{pet.lastName}}
+                    {{pet.email}}
+                  </ion-content>
+                </ion-view>
+              </script>
+
+
+              <script id="plus.html" type="text/ng-template">
+                <ion-view title="Plus">
+                  <ion-content class="padding">
+
+                    <h2>"PLUS"</h2>
+  
+                  </ion-content>
+                </ion-view>
+              </script>
+
+              </body>
+
+            </html>
+
+        <script src="js/index.js"></script>
+
+
+  </body>
+</html>
